@@ -9,9 +9,13 @@ export const Background = ({ header, footer, children }: IBackground) => {
       {header && header}
       <Container
         as="main"
-        padding={["2rem 1rem", "3.125rem 3.75rem"]}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDir="column"
         maxW="1200px"
         minH={`calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`}
+        p={["2rem 1rem", "3.125rem 3.75rem"]}
       >
         {children}
       </Container>

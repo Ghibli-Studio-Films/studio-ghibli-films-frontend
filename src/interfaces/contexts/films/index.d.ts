@@ -11,15 +11,7 @@ export interface IPaginated {
 
 export interface IFilmsContext {
   films: IFilm[];
-  getFilms: (
-    onSuccess?: (...rest: any) => any,
-    onFail?: (...rest: any) => any,
-    page?: number,
-    limit?: number
-  ) => Promise<void>;
-
-  updateFilms: (
-    onSuccess?: (...rest: any) => any,
-    onFail?: (...rest: any) => any
-  ) => Promise<void>;
+  filmsPagination: IPaginated;
+  getFilms: (url?: string, limit?: number) => Promise<void>;
+  updateFilms: () => Promise<void>;
 }

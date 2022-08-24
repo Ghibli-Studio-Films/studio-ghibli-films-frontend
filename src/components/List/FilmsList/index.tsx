@@ -13,7 +13,7 @@ export const FilmsList = ({ films }: IFilmsList) => {
       gap="75px 50px"
     >
       {films.map((film) => (
-        <ListItem>
+        <ListItem key={film.id}>
           <FilmCard film={film} />
         </ListItem>
       ))}
