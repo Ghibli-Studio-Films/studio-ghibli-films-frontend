@@ -1,7 +1,7 @@
 import axios, { AxiosRequestHeaders } from "axios";
 
 export const studioGhibliFilmsService = (
-  customHeaders: AxiosRequestHeaders
+  customHeaders?: AxiosRequestHeaders
 ) => {
   const defaultHeaders: AxiosRequestHeaders = {
     "Content-Type": "application/json",
