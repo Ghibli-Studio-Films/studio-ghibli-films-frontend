@@ -20,8 +20,8 @@ export const FilmCard = ({ film }: IFilmCard) => {
       onMouseEnter={() => handleSliderTransition()}
       onMouseOut={() => handleSliderTransition()}
       display="flex"
-      maxW="300px"
-      height="500px"
+      w="300px"
+      h="500px"
       borderRadius="40px"
       bgImage={film.image}
       bgPosition="center"
