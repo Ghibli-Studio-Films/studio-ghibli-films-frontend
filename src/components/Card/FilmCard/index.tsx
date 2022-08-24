@@ -45,7 +45,7 @@ export const FilmCard = ({ film }: IFilmCard) => {
         }}
         pointerEvents="none"
       >
-        <Box sx={{ transform: "translateY(1px)" }}>
+        <Box sx={{ transform: "translateY(0.5px)" }}>
           <Image
             sx={{
               filter: isInfoOpen ? "opacity(55%)" : "opacity(100%)",
