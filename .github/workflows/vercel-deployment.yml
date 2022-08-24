@@ -1,4 +1,4 @@
-name: deploy website
+name: vercel-deployment
 
 on:
   push:
