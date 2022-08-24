@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { FilmCard } from "../components";
+import { Background, Header } from "../components";
 
 export const Navigation = () => {
   const film = {
@@ -21,7 +21,10 @@ export const Navigation = () => {
 
   return (
     <Routes>
-      <Route path="/home" element={<FilmCard film={film} />} />
+      <Route
+        path="/home"
+        element={<Background header={<Header />}>{"Olá mundo!"}</Background>}
+      />
     </Routes>
   );
 };
