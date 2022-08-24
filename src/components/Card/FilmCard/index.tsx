@@ -68,7 +68,9 @@ export const FilmCard = ({ film }: IFilmCard) => {
         >
           {show((style, isInfoOpen) =>
             isInfoOpen ? (
-              <animated.div style={{ padding: "25px 20px", ...style }}>
+              <animated.div
+                style={{ width: "100%", padding: "25px 20px", ...style }}
+              >
                 <VStack spacing="10px" w="100%">
                   <Heading as="h2" color="white" fontSize="md">
                     {film.title}
@@ -226,8 +228,19 @@ export const FilmCard = ({ film }: IFilmCard) => {
                 </VStack>
               </animated.div>
             ) : (
-              <animated.div style={{ padding: "25px 20px", ...style }}>
-                <Heading as="h2" color="white" fontSize="lg">
+              <animated.div
+                style={{ width: "100%", padding: "25px 20px", ...style }}
+              >
+                <Heading
+                  as="h2"
+                  color="white"
+                  textAlign="center"
+                  fontSize="lg"
+                  whiteSpace="nowrap"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                  maxW="100%"
+                >
                   {film.title}
                 </Heading>
               </animated.div>

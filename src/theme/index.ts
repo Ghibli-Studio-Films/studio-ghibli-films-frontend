@@ -27,6 +27,9 @@ export const theme = extendTheme({
   },
   styles: {
     global: {
+      html: {
+        scrollBehavior: "smooth",
+      },
       body: {
         bg: "gray.50",
         color: "gray.900",

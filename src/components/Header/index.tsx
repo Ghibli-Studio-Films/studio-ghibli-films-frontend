@@ -1,5 +1,9 @@
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Container, Box, Image, HStack } from "@chakra-ui/react";
+import { useFilms } from "../../contexts";
 import logo from "../../assets/img/studio-ghibli-films-logo.png";
-import { Container, Box, Image } from "@chakra-ui/react";
 
 export const HEADER_HEIGHT = 80;
 
@@ -8,6 +12,7 @@ export const Header = () => {
     <Box as="header" h={`${HEADER_HEIGHT}px`} bg="primary.200">
       <Container
         display="flex"
+        justifyContent="space-between"
         alignItems="center"
         maxW="1200px"
         h="100%"

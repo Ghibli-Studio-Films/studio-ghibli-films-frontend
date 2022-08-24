@@ -15,32 +15,18 @@ export const FilmsProvider = ({ children }: IChildrenProps) => {
     {} as IPaginated
   );
 
-  const getFilms = async (
-    onSuccess?: (...rest: any) => any,
-    onFail?: (...rest: any) => any,
-    page?: number,
-    limit?: number
-  ) => {
-    const hasPage = page ? `page=${page}` : "";
-    const hasLimit = limit ? `limit=${limit}` : "";
-    const pageQuery = hasPage ? `?${hasPage}` : "";
-    const limitQuery = hasLimit ? `&${hasLimit}` : "";
+  const getFilms = async (url?: string, limit?: number) => {
+    const res = url
+      ? await studioGhibliFilmsService(undefined, url).get("")
+      : await studioGhibliFilmsService().get(
+          `/films${limit ? `?limit=${limit}` : ""}`
+        );
 
-    const res = await studioGhibliFilmsService().get(
-      `/films${pageQuery}${limitQuery}`
-    );
+    const { results, ...pagination } = res.data;
 
-    if (res.status === 200) {
-      const { results, ...pagination } = res.data;
+    setFilms(results);
 
-      setFilms(results);
-
-      setFilmsPagination(pagination);
-
-      !!onSuccess && onSuccess();
-    } else {
-      !!onFail && onFail();
-    }
+    setFilmsPagination(pagination);
   };
 
   const updateFilms = async (
@@ -48,16 +34,12 @@ export const FilmsProvider = ({ children }: IChildrenProps) => {
     onFail?: (...rest: any) => any
   ) => {
     const res = await studioGhibliFilmsService().get(`/films/ghibli`);
-
-    if (res.status === 200) {
-      !!onSuccess && onSuccess();
-    } else {
-      !!onFail && onFail();
-    }
   };
 
   return (
-    <FilmsContext.Provider value={{ films, getFilms, updateFilms }}>
+    <FilmsContext.Provider
+      value={{ films, filmsPagination, getFilms, updateFilms }}
+    >
       {children}
     </FilmsContext.Provider>
   );
