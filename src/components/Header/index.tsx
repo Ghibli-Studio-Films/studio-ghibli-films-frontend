@@ -1,9 +1,11 @@
 import logo from "../../assets/img/studio-ghibli-films-logo.png";
 import { Container, Box, Image } from "@chakra-ui/react";
 
+export const HEADER_HEIGHT = 80;
+
 export const Header = () => {
   return (
-    <Box as="header" h="80px" bg="primary.200">
+    <Box as="header" h={`${HEADER_HEIGHT}px`} bg="primary.200">
       <Container
         display="flex"
         alignItems="center"
