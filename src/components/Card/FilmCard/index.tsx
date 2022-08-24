@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { useTransition, animated } from "react-spring";
+import { motion, AnimatePresence, animate } from "framer-motion";
 import { Box, VStack, HStack, Image, Text, Heading } from "@chakra-ui/react";
 import cardRightSide from "../../../assets/img/card-right-side.svg";
 import { IFilmCard } from "../../../interfaces";
 
 export const FilmCard = ({ film }: IFilmCard) => {
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
-
-  const show = useTransition(isInfoOpen, {
-    from: { opacity: 0 },
-    enter: { position: "absolute", opacity: 1 },
-    leave: { opacity: 0 },
-  });
 
   const handleSliderTransition = () => setIsInfoOpen((s) => !s);
 
@@ -45,7 +39,7 @@ export const FilmCard = ({ film }: IFilmCard) => {
         }}
         pointerEvents="none"
       >
-        <Box sx={{ transform: "translateY(1px)" }}>
+        <Box sx={{ transform: "translateY(0.5px)" }}>
           <Image
             sx={{
               filter: isInfoOpen ? "opacity(55%)" : "opacity(100%)",
@@ -66,12 +60,16 @@ export const FilmCard = ({ film }: IFilmCard) => {
           borderBottomLeftRadius="40px"
           borderBottomRightRadius="40px"
         >
-          {show((style, isInfoOpen) =>
-            isInfoOpen ? (
-              <animated.div
-                style={{ width: "100%", padding: "25px 20px", ...style }}
+          <AnimatePresence>
+            {isInfoOpen ? (
+              <motion.div
+                key="info"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
               >
-                <VStack spacing="10px" w="100%">
+                <VStack spacing="10px" w="100%" p="20px 20px">
                   <Heading as="h2" color="white" fontSize="md">
                     {film.title}
                   </Heading>
@@ -226,10 +224,14 @@ export const FilmCard = ({ film }: IFilmCard) => {
                     </Box>
                   </HStack>
                 </VStack>
-              </animated.div>
+              </motion.div>
             ) : (
-              <animated.div
-                style={{ width: "100%", padding: "25px 20px", ...style }}
+              <motion.div
+                key="heading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
                 <Heading
                   as="h2"
@@ -240,12 +242,13 @@ export const FilmCard = ({ film }: IFilmCard) => {
                   textOverflow="ellipsis"
                   overflow="hidden"
                   maxW="100%"
+                  p="20px 20px"
                 >
                   {film.title}
                 </Heading>
-              </animated.div>
-            )
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </VStack>
       </Box>
     </Box>
