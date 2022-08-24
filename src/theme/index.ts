@@ -1,41 +1,39 @@
-import { theme as baseTheme, extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
-export const theme = extendTheme(
-  baseTheme,
-  {
-    colors: {
-      primary: {
-        700: "#473535",
-        500: "#876C57",
-        200: "#ECE3D4",
-      },
-      secondary: {
-        700: "#5096EB",
-        500: "#82C1ED",
-      },
+export const theme = extendTheme({
+  colors: {
+    primary: {
+      700: "#473535",
+      500: "#876C57",
+      200: "#ECE3D4",
     },
-    font: {
-      h2500: '500 2rem "Lexend", sans-serif',
-      h15500: '500 1.5rem "Lexend", sans-serif',
-      h1500: '500 1rem "Lexend", sans-serif',
-      b1500: '500 1em "Inter", sans-serif',
-      b1400: '400 1em "Inter", sans-serif',
+    secondary: {
+      700: "#5096EB",
+      70095: "#5096EB95",
+      500: "#82C1ED",
+    },
+    gray: {
+      50: "#D9D9D9",
     },
   },
-  {
-    styles: {
-      global: {
-        body: {
-          font: "font.b1400",
-          color: "gray.800",
-        },
-        "h1, h2, h3, h4, h5, h6": {
-          font: "font.h2500",
-        },
-        button: {
-          cursor: "pointer",
-        },
+  fonts: {
+    heading: "Lexend",
+    body: "Inter",
+  },
+  fontSizes: {
+    md: "1rem",
+    lg: "1.5rem",
+    xl: "2rem",
+  },
+  styles: {
+    global: {
+      body: {
+        bg: "gray.50",
+        color: "gray.900",
+        fontWeight: "400",
+        fontSize: "md",
       },
+      button: { cursor: "pointer" },
     },
-  }
-);
+  },
+});
